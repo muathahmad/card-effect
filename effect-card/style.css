@@ -4,7 +4,7 @@
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -29,7 +29,7 @@ section {
     &::after {
       content: "";
       position: absolute;
-      inset: 80% 0.5rem 0.5rem;
+      inset: 1rem;
       translate: 0;
       background-color: black;
       filter: blur(1.5rem);
@@ -57,7 +57,7 @@ section {
       rotate: x var(--rotation);
 
       .logo {
-        transform: translateY(40px) translateZ(-2rem);
+        transform: translateY(10px) translateZ(-8rem);
         rotate: x calc(var(--rotation) * -1);
       }
 
