@@ -1,0 +1,119 @@
+:root {
+  --timing: 400ms;
+  --rotation: 25deg;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+}
+
+section {
+  perspective: 1000px;
+
+  .spider-man {
+    width: 350px;
+    aspect-ratio: 9/12;
+    position: relative;
+    transition: all var(--timing) ease-in-out;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 80% 0.5rem 0.5rem;
+      translate: 0;
+      background-color: black;
+      filter: blur(1.5rem);
+      z-index: 1;
+      transition: all var(--timing) ease-in-out;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 100;
+      border-radius: 5px;
+      opacity: 0;
+      background-image: radial-gradient(
+        circle,
+        transparent 100px,
+        transparent 150px,
+        black
+      );
+      transition: all var(--timing) ease-in-out;
+    }
+
+    &:hover {
+      rotate: x var(--rotation);
+
+      .logo {
+        transform: translateY(40px) translateZ(-2rem);
+        rotate: x calc(var(--rotation) * -1);
+      }
+
+      .front-img {
+        opacity: 1;
+        scale: 1.55;
+        transform: translateY(60px) translateZ(10rem);
+        rotate: x 0deg;
+        
+      }
+
+      .bg-image {
+        filter: grayscale(12);
+      }
+
+      &::before {
+        opacity: 1;
+      }
+
+      &::after {
+        rotate: x calc(var(--rotation) * -1);
+        translate: 0 80px;
+      }
+    }
+  }
+
+  .bg-image {
+    height: 100%;
+    width: 100%;
+    object-position: center;
+    object-fit: cover;
+    border-radius: 5px;
+    position: absolute;
+    z-index: 10;
+  }
+
+  .logo,
+  .front-img {
+    position: absolute;
+  }
+
+  .logo {
+    z-index: 1000;
+    filter: contrast(1);
+    width: 75%;
+    margin-inline: auto;
+    transform: translateY(0) translateZ(0);
+    inset: auto 0 2rem;
+    transition: all var(--timing) ease-in-out;
+  }
+
+  .front-img {
+    opacity: 0;
+    transform-origin: bottom;
+    z-index: 100;
+    transition: all var(--timing) ease-in-out;
+  }
+}
+  
